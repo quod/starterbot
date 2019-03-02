@@ -5,6 +5,7 @@ from slackclient import SlackClient
 
 # instantiate Slack client
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
+
 # starterbot's user ID in Slack: value is assigned after the bot starts up
 starterbot_id = None
 
@@ -54,7 +55,7 @@ def handle_command(command, channel):
         channel=channel,
         text=response or default_response
     )
-    
+
 if __name__ == "__main__":
 	if slack_client.rtm_connect(with_team_state=False):
 		print("Starter Bot connected and running!")
@@ -67,3 +68,4 @@ if __name__ == "__main__":
 			time.sleep(RTM_READ_DELAY)
 	else:
 		print("Connection failed. Exception traceback printed above.")
+		
